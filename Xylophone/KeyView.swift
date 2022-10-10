@@ -2,7 +2,7 @@ import UIKit
 
 class KeyView: UIView {
 
-    var sound: Sound?
+    private var sound: Sound?
 
     private lazy var button: UIButton = {
         let button = UIButton()
@@ -18,23 +18,47 @@ class KeyView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configureView() {
+    private func configureView() {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         button.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         button.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         button.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
-}
 
-extension KeyView {
-    public func configureButton(with sound: Sound, image: UIImage) {
-        self.sound = sound
-        button.setBackgroundImage(image, for: .normal)
+    private func configureButtonView(with sound: Sound) {
+        switch sound {
+        case .aNote:
+            configureButtonView(title: L10n.aNote, color: .blue)
+        case .bNote:
+            configureButtonView(title: L10n.bNote, color: .purple)
+        case .cNote:
+            configureButtonView(title: L10n.cNote, color: .red)
+        case .dNote:
+            configureButtonView(title: L10n.dNote, color: .orange)
+        case .eNote:
+            configureButtonView(title: L10n.eNote, color: .yellow)
+        case .fNote:
+            configureButtonView(title: L10n.fNote, color: .green)
+        case .gNote:
+            configureButtonView(title: L10n.gNote, color: .systemBlue)
+        }
+    }
+
+    private func configureButtonView (title: String, color: UIColor) {
+        button.setTitle(title, for: .normal)
+        button.backgroundColor = color
     }
 }
 
-enum Sound {
+extension KeyView {
+    public func configureButton(with sound: Sound) {
+        self.sound = sound
+        configureButtonView(with: sound)
+    }
+}
+
+public enum Sound {
     case aNote
     case bNote
     case cNote
