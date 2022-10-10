@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 class MainScreenView: UIView {
 
@@ -49,8 +50,10 @@ class MainScreenView: UIView {
                 gNoteView
             ]
         )
+        stackView.alignment = .center
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
+        stackView.spacing = 8
         return stackView
     }()
 
@@ -64,9 +67,20 @@ class MainScreenView: UIView {
     }
 
     private func setupView() {
-        self.addSubview(stackView)
+        backgroundColor = .white
+        addSubview(stackView)
         stackView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.right.bottom.left.equalToSuperview().inset(4)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top)
+        }
+
+        var multiplicator: Double = 1
+
+        for view in stackView.arrangedSubviews {
+            view.snp.makeConstraints { make in
+                make.width.equalTo(stackView.snp.width).multipliedBy(multiplicator)
+            }
+            multiplicator -= 0.015
         }
     }
 }

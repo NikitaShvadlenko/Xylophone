@@ -1,11 +1,12 @@
 import UIKit
-
+import SnapKit
 class KeyView: UIView {
 
     private var sound: Sound
 
     private lazy var button: UIButton = {
         let button = UIButton()
+        button.titleLabel?.font = .boldSystemFont(ofSize: 50)
         return button
     }()
 
@@ -21,6 +22,10 @@ class KeyView: UIView {
     }
 
     private func configureView() {
+        addSubview(button)
+        button.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 
     private func configureButtonView(with sound: Sound) {
@@ -34,7 +39,7 @@ class KeyView: UIView {
         case .dNote:
             configureButtonView(title: L10n.dNote, color: .orange)
         case .eNote:
-            configureButtonView(title: L10n.eNote, color: .yellow)
+            configureButtonView(title: L10n.eNote, color: .systemYellow)
         case .fNote:
             configureButtonView(title: L10n.fNote, color: .green)
         case .gNote:
