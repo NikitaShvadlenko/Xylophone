@@ -41,13 +41,13 @@ class MainScreenView: UIView {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(
             arrangedSubviews: [
-                aNoteView,
-                bNoteView,
                 cNoteView,
                 dNoteView,
                 eNoteView,
                 fNoteView,
-                gNoteView
+                gNoteView,
+                aNoteView,
+                bNoteView
             ]
         )
         stackView.alignment = .center
@@ -82,5 +82,18 @@ class MainScreenView: UIView {
             }
             multiplicator -= 0.015
         }
+    }
+}
+
+// MARK: Public Methods
+extension MainScreenView {
+    public func setDelegateForButtons(delegate: KeyViewDelegate) {
+        aNoteView.delegate = delegate
+        bNoteView.delegate = delegate
+        cNoteView.delegate = delegate
+        dNoteView.delegate = delegate
+        eNoteView.delegate = delegate
+        fNoteView.delegate = delegate
+        gNoteView.delegate = delegate
     }
 }
