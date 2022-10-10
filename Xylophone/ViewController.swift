@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  Xylophone
-//
-//  Created by Nikita Shvad on 10.10.2022.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
