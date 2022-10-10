@@ -1,11 +1,20 @@
 import UIKit
 import SnapKit
+protocol KeyViewDelegate: AnyObject {
+    func keyView(
+        _ keyView: KeyView,
+        didPressButtonFor sound: Sound
+    )
+}
+
 class KeyView: UIView {
 
+    weak var delegate: KeyViewDelegate?
     private var sound: Sound
 
     private lazy var button: UIButton = {
         let button = UIButton()
+        button.addTarget(self, action: #selector(pressedKeyButton), for: .touchUpInside)
         button.titleLabel?.font = .boldSystemFont(ofSize: 50)
         return button
     }()
@@ -50,5 +59,10 @@ class KeyView: UIView {
     private func configureButtonView (title: String, color: UIColor) {
         button.setTitle(title, for: .normal)
         button.backgroundColor = color
+    }
+
+    @objc
+    private func pressedKeyButton() {
+        delegate?.keyView(self, didPressButtonFor: sound)
     }
 }
