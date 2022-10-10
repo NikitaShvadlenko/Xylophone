@@ -13,3 +13,10 @@ xcassets:
       params:
         forceProvidesNamespaces: true
       output: Xylophone/Generated/XCAssets+Generated.swift
+
+files:
+  inputs: 
+    - Xylophone/Resources/Sounds
+  outputs:
+    templateName: structured-swift5
+    output: Xylophone/Generated/Sounds+Generated.swift
