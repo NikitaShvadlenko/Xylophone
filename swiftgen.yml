@@ -1,0 +1,15 @@
+strings:
+  inputs:
+    - Xylophone/Resources/Strings/en.lproj
+  outputs:
+    - templateName: structured-swift5
+      output: Xylophone/Generated/Strings+Generated.swift
+
+xcassets:
+  inputs:
+    - Xylophone/Resources/Assets.xcassets
+  outputs:
+    - templateName: swift5
+      params:
+        forceProvidesNamespaces: true
+      output: Xylophone/Generated/XCAssets+Generated.swift
