@@ -2,16 +2,18 @@ import UIKit
 
 class KeyView: UIView {
 
-    private var sound: Sound?
+    private var sound: Sound
 
     private lazy var button: UIButton = {
         let button = UIButton()
         return button
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(sound: Sound) {
+        self.sound = sound
+        super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         configureView()
+        configureButtonView(with: sound)
     }
 
     required init?(coder: NSCoder) {
@@ -19,11 +21,6 @@ class KeyView: UIView {
     }
 
     private func configureView() {
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        button.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        button.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        button.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
 
     private func configureButtonView(with sound: Sound) {
@@ -49,21 +46,4 @@ class KeyView: UIView {
         button.setTitle(title, for: .normal)
         button.backgroundColor = color
     }
-}
-
-extension KeyView {
-    public func configureButton(with sound: Sound) {
-        self.sound = sound
-        configureButtonView(with: sound)
-    }
-}
-
-public enum Sound {
-    case aNote
-    case bNote
-    case cNote
-    case dNote
-    case eNote
-    case fNote
-    case gNote
 }

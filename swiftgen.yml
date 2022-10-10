@@ -17,6 +17,7 @@ xcassets:
 files:
   inputs: 
     - Xylophone/Resources/Sounds
+  filter: .+\.wav$
   outputs:
     templateName: structured-swift5
     output: Xylophone/Generated/Sounds+Generated.swift

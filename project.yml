@@ -15,12 +15,19 @@ options:
 attributes:
   ORGANIZATIONNAME: "Nikita Shvadlenko"
 
+packages:
+  SnapKit:
+    url: https://github.com/SnapKit/SnapKit
+    minorVersion: 5.6.0
+
 targets:
   Xylophone:
     platform: iOS
     type: application
     sources:
       - path: "Xylophone"
+    dependencies:
+      - package: SnapKit
     settings:
       base:
         TARGETED_DEVICE_FAMILY: 1
