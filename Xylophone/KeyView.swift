@@ -57,8 +57,9 @@ class KeyView: UIView {
     }
 
     private func fadeInFadeOutAnimation(for view: UIView) {
-        view.alpha = 0.5
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.allowUserInteraction, .beginFromCurrentState]) {
+            view.alpha = 0.5
+        } completion: { _ in
             view.alpha = 1
         }
     }
