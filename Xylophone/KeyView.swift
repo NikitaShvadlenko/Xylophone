@@ -56,6 +56,13 @@ class KeyView: UIView {
         }
     }
 
+    private func fadeInFadeOutAnimation(for view: UIView) {
+        view.alpha = 0.5
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            view.alpha = 1
+        }
+    }
+
     private func configureButtonView (title: String, color: UIColor) {
         button.setTitle(title, for: .normal)
         button.backgroundColor = color
@@ -63,6 +70,7 @@ class KeyView: UIView {
 
     @objc
     private func pressedKeyButton() {
+        fadeInFadeOutAnimation(for: self)
         delegate?.keyView(self, didPressButtonFor: sound)
     }
 }
